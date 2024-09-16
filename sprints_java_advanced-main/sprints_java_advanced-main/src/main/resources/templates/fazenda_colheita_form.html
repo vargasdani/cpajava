@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Fazenda e Colheita</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Fazenda e Colheita</h1>
+
+        <!-- Exibir mensagens de erro -->
+        <div th:if="${errorMessage}" style="color: red;">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+        <!-- Formulário de cadastro de Fazenda -->
+        <h2>Cadastro de Fazenda</h2>
+        <form th:action="@{/api/fazenda}" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="dono">Dono da Fazenda:</label>
+            <input type="text" id="dono" name="dono" required>
+
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" required>
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" required>
+
+            <label for="tamanho">Tamanho (em hectares):</label>
+            <input type="number" id="tamanho" name="tamanho" required>
+
+            <button type="submit">Cadastrar Fazenda</button>
+        </form>
+
+        <hr>
+
+        <!-- Exibe fazendas cadastradas com botões de edição e exclusão -->
+        <h2>Fazendas Cadastradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dono</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Tamanho</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="fazenda : ${fazendas}">
+                    <td th:text="${fazenda.dono}"></td>
+                    <td th:text="${fazenda.latitude}"></td>
+                    <td th:text="${fazenda.longitude}"></td>
+                    <td th:text="${fazenda.tamanho}"></td>
+                    <td>
+                        <a th:href="@{/api/fazenda/edit/{id}(id=${fazenda.id})}">Editar</a> |
+                        <a th:href="@{/api/fazenda/delete/{id}(id=${fazenda.id})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- Formulário de cadastro de Colheita -->
+        <h2>Cadastro de Colheita</h2>
+        <form th:action="@{/api/fazenda/colheita}" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="nome">Nome da Colheita:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="tipo">Tipo de Colheita:</label>
+            <input type="text" id="tipo" name="tipo" required>
+
+            <label for="estacaoDoAno">Estação do Ano:</label>
+            <input type="text" id="estacaoDoAno" name="estacaoDoAno" required>
+
+            <!-- Selecionar uma fazenda cadastrada -->
+            <label for="fazendaId">Selecione uma Fazenda:</label>
+            <select id="fazendaId" name="fazendaId" required>
+                <option th:each="fazenda : ${fazendas}" th:value="${fazenda.id}" th:text="${fazenda.dono}"></option>
+            </select>
+
+            <button type="submit">Cadastrar Colheita</button>
+        </form>
+
+        <hr>
+
+        <!-- Tabela de colheitas cadastradas com botões de edição e exclusão -->
+        <h2>Colheitas Cadastradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Estação do Ano</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="colheita : ${colheitas}">
+                    <td th:text="${colheita.nome}"></td>
+                    <td th:text="${colheita.tipo}"></td>
+                    <td th:text="${colheita.estacaoDoAno}"></td>
+                    <td>
+                        <a th:href="@{/api/colheita/edit/{id}(id=${colheita.id})}">Editar</a> |
+                        <a th:href="@{/api/colheita/delete/{id}(id=${colheita.id})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

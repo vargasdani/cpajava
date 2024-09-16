@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Colheita</title>
+</head>
+<body>
+    <h1>Cadastro de Colheita</h1>
+    <form th:action="@{/api/colheita}" method="post">
+        <label for="nome">Nome da Colheita:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="tipo">Tipo de Colheita:</label><br>
+        <input type="text" id="tipo" name="tipo" required><br><br>
+
+        <label for="estacaoDoAno">Estação do Ano:</label><br>
+        <input type="text" id="estacaoDoAno" name="estacaoDoAno" required><br><br>
+
+        <label for="fazendaId">ID da Fazenda:</label><br>
+        <input type="number" id="fazendaId" name="fazendaId" required><br><br>
+
+        <button type="submit">Cadastrar Colheita</button>
+    </form>
+</body>
+</html>

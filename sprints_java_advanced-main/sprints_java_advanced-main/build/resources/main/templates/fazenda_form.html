@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Fazenda</title>
+</head>
+<body>
+    <h1>Cadastro de Fazenda</h1>
+    <form th:action="@{/api/fazenda}" method="post">
+        <label for="dono">Dono da Fazenda:</label><br>
+        <input type="text" id="dono" name="dono" required><br><br>
+
+        <label for="latitude">Latitude:</label><br>
+        <input type="text" id="latitude" name="latitude" required><br><br>
+
+        <label for="longitude">Longitude:</label><br>
+        <input type="text" id="longitude" name="longitude" required><br><br>
+
+        <label for="tamanho">Tamanho (em hectares):</label><br>
+        <input type="number" id="tamanho" name="tamanho" required><br><br>
+
+        <button type="submit">Cadastrar Fazenda</button>
+    </form>
+</body>
+</html>
