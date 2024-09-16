@@ -8,12 +8,18 @@ ANÁLISE E DESENVOLVIMENTO DE SISTEMAS
 By  
 EQUIPE CPA  
   
+
   
 André Rohregger Machado - RM98110
+
 Daniele Vargas de Lima -RM99400
+
 Daniel Alves de Souza -RM552310
+
 Marcela S Moreira -RM552051
+
 Nathalia Braga do Nascimento - RM552221
+
   
   
 São Paulo, setembro, 2024. 
